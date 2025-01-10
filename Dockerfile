@@ -1,6 +1,8 @@
 FROM python:3.10-slim
 
-RUN apt-get update && apt-get install -y git && apt-get clean
+RUN apt-get update && \
+    apt-get install -y git && \
+    apt-get clean
 
 WORKDIR /
 
@@ -11,5 +13,9 @@ WORKDIR /app
 RUN pip install --no-cache-dir flask
 
 EXPOSE 80
+
+ENV FLASK_APP=/app/app/app.py
+
+WORKDIR /app/app
 
 CMD ["flask", "run", "--host", "0.0.0.0", "--port", "80"]
