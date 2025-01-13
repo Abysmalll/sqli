@@ -4,6 +4,7 @@ import os
 
 app = Flask(__name__)
 app.secret_key = 'thesecretsecretkey'
+app.config['SESSION_COOKIE_NAME'] = 'sessionID'
 
 def init_db():
     db_path = os.path.join(os.getcwd(), 'database.db')
