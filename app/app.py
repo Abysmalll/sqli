@@ -74,15 +74,7 @@ def admins_only():
             flag_content = flag_file.read()
         return render_template('admin_only.html', flag_content=flag_content)
     else:
-        return "Admin only!", 403
-
-@app.route('/debug_session')
-def debug_session():
-    return f"SESSION_COOKIE_NAME: {app.config['SESSION_COOKIE_NAME']}"
-
-@app.route('/routes')
-def list_routes():
-    return "\n".join([str(rule) for rule in app.url_map.iter_rules()])
+        return "Access denied! admin only!", 403
 
 if __name__ == '__main__':
     init_db()
