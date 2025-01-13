@@ -80,6 +80,10 @@ def admins_only():
 def debug_session():
     return f"SESSION_COOKIE_NAME: {app.config['SESSION_COOKIE_NAME']}"
 
+@app.route('/routes')
+def list_routes():
+    return "\n".join([str(rule) for rule in app.url_map.iter_rules()])
+
 if __name__ == '__main__':
     init_db()
     app.run(debug=False, host='0.0.0.0')
