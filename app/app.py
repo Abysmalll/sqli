@@ -76,6 +76,10 @@ def admins_only():
     else:
         return "Access denied. Admin only!", 403
 
+@app.route('/debug_session')
+def debug_session():
+    return f"SESSION_COOKIE_NAME: {app.config['SESSION_COOKIE_NAME']}"
+
 if __name__ == '__main__':
     init_db()
     app.run(debug=False, host='0.0.0.0')
