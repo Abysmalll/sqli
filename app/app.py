@@ -74,7 +74,7 @@ def admins_only():
             flag_content = flag_file.read()
         return render_template('admin_only.html', flag_content=flag_content)
     else:
-        return "Access denied. Admin only!", 403
+        return "Admin only!", 403
 
 @app.route('/debug_session')
 def debug_session():
